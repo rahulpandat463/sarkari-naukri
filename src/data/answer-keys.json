@@ -1,0 +1,50 @@
+[
+  {
+    "id": "k1",
+    "title": "SSC CGL Tier I 2025 उत्तर कुंजी जारी",
+    "titleEn": "SSC CGL Tier I 2025 Answer Key Released",
+    "slug": "ssc-cgl-tier1-answer-key-2025",
+    "examDate": "दिसंबर 2025",
+    "releaseDate": "15 जनवरी 2026",
+    "organization": "कर्मचारी चयन आयोग / SSC",
+    "description": "SSC CGL Tier I परीक्षा 2025 की उत्तर कुंजी जारी कर दी गई है। उम्मीदवार आपत्ति दर्ज कर सकते हैं।",
+    "officialLink": "https://ssc.nic.in",
+    "isActive": true
+  },
+  {
+    "id": "k2",
+    "title": "RRB ALP CBT 2025 उत्तर कुंजी",
+    "titleEn": "RRB ALP CBT 2025 Answer Key",
+    "slug": "rrb-alp-answer-key-2025",
+    "examDate": "अक्टूबर 2025",
+    "releaseDate": "20 जनवरी 2026",
+    "organization": "रेलवे भर्ती बोर्ड / RRB",
+    "description": "RRB ALP CBT परीक्षा 2025 की उत्तर कुंजी जारी कर दी गई है। उम्मीदवार RRB वेबसाइट से डाउनलोड कर सकते हैं।",
+    "officialLink": "https://www.rrcb.gov.in",
+    "isActive": true
+  },
+  {
+    "id": "k3",
+    "title": "CTET जनवरी 2026 उत्तर कुंजी जारी",
+    "titleEn": "CTET January 2026 Answer Key Released",
+    "slug": "ctet-january-2026-answer-key",
+    "examDate": "जनवरी 2026",
+    "releaseDate": "05 फरवरी 2026",
+    "organization": "CBSE",
+    "description": "CTET जनवरी 2026 परीक्षा की उत्तर कुंजी जारी कर दी गई है। उम्मीदवार आपत्ति दर्ज कर सकते हैं।",
+    "officialLink": "https://ctet.nic.in",
+    "isActive": true
+  },
+  {
+    "id": "k4",
+    "title": "UPSC CAPF AC 2025 उत्तर कुंजी",
+    "titleEn": "UPSC CAPF AC 2025 Answer Key",
+    "slug": "upsc-capf-answer-key-2025",
+    "examDate": "अगस्त 2025",
+    "releaseDate": "10 जनवरी 2026",
+    "organization": "संघ लोक सेवा आयोग / UPSC",
+    "description": "UPSC CAPF AC परीक्षा 2025 की उत्तर कुंजी जारी कर दी गई है। उम्मीदवार UPSC वेबसाइट से डाउनलोड कर सकते हैं।",
+    "officialLink": "https://upsc.gov.in",
+    "isActive": true
+  }
+]

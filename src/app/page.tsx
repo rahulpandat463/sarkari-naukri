@@ -1,101 +1,119 @@
-import Image from "next/image";
+import Link from "next/link";
+import { site, getActiveJobs, jobs } from "@/lib/utils";
+import BreakingTicker from "@/components/BreakingTicker";
+import CategoryCard from "@/components/CategoryCard";
+import JobCard from "@/components/JobCard";
+import Sidebar from "@/components/Sidebar";
+import { site as siteData } from "@/lib/utils";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const activeJobs = getActiveJobs();
+  const latestJobs = activeJobs.slice(0, 8);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const categoryCounts = site.categories.map((cat) => ({
+    ...cat,
+    count: jobs.filter((j) => j.category.includes(cat.id) && j.isActive).length,
+  }));
+
+  return (
+    <>
+      <BreakingTicker />
+
+      <div id="header-ad-mobile" className="bg-gray-100 py-2 text-center md:hidden">
+        <div className="bg-gray-200 h-[60px] flex items-center justify-center text-gray-400 text-xs mx-auto">
+          Ad Space - Mobile Header
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+
+      <div className="page-container">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 space-y-8">
+            <section>
+              <h2 className="section-title">📂 नौकरी श्रेणियां / Job Categories</h2>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                {categoryCounts.slice(0, 7).map((cat) => (
+                  <CategoryCard key={cat.id} category={cat} count={cat.count} />
+                ))}
+              </div>
+            </section>
+
+            <section>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="section-title mb-0">🔴 नवीनतम नौकरियां / Latest Jobs</h2>
+                <Link href="/jobs" className="text-sm text-primary font-semibold hover:underline">
+                  सभी देखें →
+                </Link>
+              </div>
+              <div className="space-y-4">
+                {latestJobs.map((job, idx) => (
+                  <JobCard key={job.id} job={job} showAd={idx === 2} />
+                ))}
+              </div>
+              <div className="text-center mt-6">
+                <Link
+                  href="/jobs"
+                  className="bg-secondary text-white px-8 py-3 rounded-lg font-semibold hover:bg-secondary-light transition inline-block"
+                >
+                  सभी नौकरियां देखें / View All Jobs →
+                </Link>
+              </div>
+            </section>
+          </div>
+
+          <div>
+            <Sidebar />
+          </div>
+        </div>
+
+        <section className="mt-8">
+          <h2 className="section-title">📢 महत्वपूर्ण लिंक / Important Links</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <Link href="/results" className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition text-center">
+              <span className="text-2xl block mb-1">📋</span>
+              <span className="text-sm font-semibold text-gray-700">परीक्षा परिणाम</span>
+              <span className="text-xs text-gray-500 block">Exam Results</span>
+            </Link>
+            <Link href="/admit-card" className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition text-center">
+              <span className="text-2xl block mb-1">🎫</span>
+              <span className="text-sm font-semibold text-gray-700">एडमिट कार्ड</span>
+              <span className="text-xs text-gray-500 block">Admit Cards</span>
+            </Link>
+            <Link href="/answer-key" className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition text-center">
+              <span className="text-2xl block mb-1">🔑</span>
+              <span className="text-sm font-semibold text-gray-700">उत्तर कुंजी</span>
+              <span className="text-xs text-gray-500 block">Answer Keys</span>
+            </Link>
+            <Link href="/about" className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition text-center">
+              <span className="text-2xl block mb-1">ℹ️</span>
+              <span className="text-sm font-semibold text-gray-700">हमारे बारे में</span>
+              <span className="text-xs text-gray-500 block">About Us</span>
+            </Link>
+          </div>
+        </section>
+
+        <section className="mt-8">
+          <div className="bg-primary text-white rounded-lg p-6 text-center">
+            <h3 className="text-xl font-bold mb-2">📱 Telegram Group से जुड़ें</h3>
+            <p className="mb-4">नवीनतम नौकरी अपडेट, परिणाम और एडमिट कार्ड की जानकारी सबसे पहले पाने के लिए हमारे Telegram Group से जुड़ें!</p>
+            <a
+              href={siteData.telegramLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-white text-primary px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition"
+            >
+              Join Telegram Now 🚀
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <div id="between-content-ad" className="bg-gray-100 py-3 text-center">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="bg-gray-200 h-[120px] flex items-center justify-center text-gray-400 text-sm mx-auto">
+            Ad Space - Between Content (Responsive)
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

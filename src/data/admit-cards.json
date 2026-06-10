@@ -1,0 +1,62 @@
+[
+  {
+    "id": "a1",
+    "title": "SSC CGL Tier II 2026 एडमिट कार्ड जारी",
+    "titleEn": "SSC CGL Tier II 2026 Admit Card Released",
+    "slug": "ssc-cgl-tier2-admit-card-2026",
+    "examDate": "15 मार्च 2026",
+    "releaseDate": "01 मार्च 2026",
+    "organization": "कर्मचारी चयन आयोग / SSC",
+    "description": "SSC CGL Tier II परीक्षा 2026 के लिए एडमिट कार्ड जारी कर दिए गए हैं। उम्मीदवार अपना रोल नंबर और जन्मतिथि दर्ज करके डाउनलोड कर सकते हैं।",
+    "officialLink": "https://ssc.nic.in",
+    "isActive": true
+  },
+  {
+    "id": "a2",
+    "title": "UPSC Civil Services Prelims 2026 एडमिट कार्ड",
+    "titleEn": "UPSC Civil Services Prelims 2026 Admit Card",
+    "slug": "upsc-prelims-admit-card-2026",
+    "examDate": "31 मई 2026",
+    "releaseDate": "20 मई 2026",
+    "organization": "संघ लोक सेवा आयोग / UPSC",
+    "description": "UPSC सिविल सेवा प्रारंभिक परीक्षा 2026 के लिए एडमिट कार्ड जारी कर दिए गए हैं। उम्मीदवार UPSC वेबसाइट से डाउनलोड कर सकते हैं।",
+    "officialLink": "https://upsc.gov.in",
+    "isActive": true
+  },
+  {
+    "id": "a3",
+    "title": "RRB NTPC CBT-1 2026 एडमिट कार्ड",
+    "titleEn": "RRB NTPC CBT-1 2026 Admit Card",
+    "slug": "rrb-ntpc-cbt1-admit-card-2026",
+    "examDate": "20 फरवरी 2026",
+    "releaseDate": "10 फरवरी 2026",
+    "organization": "रेलवे भर्ती बोर्ड / RRB",
+    "description": "RRB NTPC CBT-1 परीक्षा 2026 के लिए एडमिट कार्ड जारी कर दिए गए हैं। उम्मीदवार अपने RRB क्षेत्रीय वेबसाइट से डाउनलोड कर सकते हैं।",
+    "officialLink": "https://www.rrcb.gov.in",
+    "isActive": true
+  },
+  {
+    "id": "a4",
+    "title": "बिहार बोर्ड 12वीं परीक्षा 2026 प्रवेश पत्र",
+    "titleEn": "Bihar Board 12th Exam 2026 Admit Card",
+    "slug": "bihar-board-12th-admit-card-2026",
+    "examDate": "01 फरवरी 2026",
+    "releaseDate": "15 जनवरी 2026",
+    "organization": "बिहार विद्यालय परीक्षा समिति / BSEB",
+    "description": "बिहार बोर्ड 12वीं परीक्षा 2026 के लिए प्रवेश पत्र जारी कर दिए गए हैं। विद्यालय अपने छात्रों के लिए डाउनलोड कर सकते हैं।",
+    "officialLink": "https://biharboardonline.bihar.gov.in",
+    "isActive": true
+  },
+  {
+    "id": "a5",
+    "title": "IBPS RRB Officer Scale I 2026 एडमिट कार्ड",
+    "titleEn": "IBPS RRB Officer Scale I 2026 Admit Card",
+    "slug": "ibps-rrb-officer-admit-card-2026",
+    "examDate": "10 अप्रैल 2026",
+    "releaseDate": "25 मार्च 2026",
+    "organization": "IBPS",
+    "description": "IBPS RRB Officer Scale I परीक्षा 2026 के लिए एडमिट कार्ड जारी कर दिए गए हैं। उम्मीदवार IBPS वेबसाइट से डाउनलोड कर सकते हैं।",
+    "officialLink": "https://ibps.in",
+    "isActive": true
+  }
+]

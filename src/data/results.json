@@ -1,0 +1,74 @@
+[
+  {
+    "id": "r1",
+    "title": "SSC CGL Tier I परीक्षा 2025 का परिणाम जारी",
+    "titleEn": "SSC CGL Tier I Exam 2025 Result Released",
+    "slug": "ssc-cgl-tier1-result-2025",
+    "examDate": "नवंबर 2025",
+    "resultDate": "10 जनवरी 2026",
+    "organization": "कर्मचारी चयन आयोग / SSC",
+    "description": "SSC CGL Tier I परीक्षा 2025 का परिणाम आधिकारिक वेबसाइट पर जारी कर दिया गया है। उम्मीदवार अपना रोल नंबर और जन्मतिथि दर्ज करके परिणाम देख सकते हैं।",
+    "officialLink": "https://ssc.nic.in",
+    "isActive": true
+  },
+  {
+    "id": "r2",
+    "title": "UPSC Civil Services Prelims 2025 परिणाम घोषित",
+    "titleEn": "UPSC Civil Services Prelims 2025 Result Declared",
+    "slug": "upsc-prelims-result-2025",
+    "examDate": "जून 2025",
+    "resultDate": "20 दिसंबर 2025",
+    "organization": "संघ लोक सेवा आयोग / UPSC",
+    "description": "UPSC सिविल सेवा प्रारंभिक परीक्षा 2025 का परिणाम घोषित कर दिया गया है। चयनित उम्मीदवार मुख्य परीक्षा के लिए पात्र होंगे।",
+    "officialLink": "https://upsc.gov.in",
+    "isActive": true
+  },
+  {
+    "id": "r3",
+    "title": "RRB ALP 2025 परीक्षा परिणाम जारी",
+    "titleEn": "RRB ALP 2025 Exam Result Released",
+    "slug": "rrb-alp-result-2025",
+    "examDate": "अक्टूबर 2025",
+    "resultDate": "15 जनवरी 2026",
+    "organization": "रेलवे भर्ती बोर्ड / RRB",
+    "description": "RRB सहायक लोको पायलट (ALP) परीक्षा 2025 का परिणाम जारी कर दिया गया है। उम्मीदवार अपने संबंधित RRB क्षेत्रीय वेबसाइट से परिणाम देख सकते हैं।",
+    "officialLink": "https://www.rrcb.gov.in",
+    "isActive": true
+  },
+  {
+    "id": "r4",
+    "title": "IBPS PO 2025 प्रारंभिक परीक्षा का परिणाम",
+    "titleEn": "IBPS PO 2025 Prelims Result",
+    "slug": "ibps-po-prelims-result-2025",
+    "examDate": "दिसंबर 2025",
+    "resultDate": "25 जनवरी 2026",
+    "organization": "IBPS",
+    "description": "IBPS PO 2025 प्रारंभिक परीक्षा का परिणाम जारी कर दिया गया है। चयनित उम्मीदवार मुख्य परीक्षा के लिए पात्र होंगे।",
+    "officialLink": "https://ibps.in",
+    "isActive": true
+  },
+  {
+    "id": "r5",
+    "title": "बिहार पुलिस कांस्टेबल भर्ती 2025 परिणाम",
+    "titleEn": "Bihar Police Constable Recruitment 2025 Result",
+    "slug": "bihar-police-constable-result-2025",
+    "examDate": "सितंबर 2025",
+    "resultDate": "05 जनवरी 2026",
+    "organization": "बिहार पुलिस / Bihar Police",
+    "description": "बिहार पुलिस कांस्टेबल भर्ती परीक्षा 2025 का परिणाम जारी कर दिया गया है। उम्मीदवार आधिकारिक वेबसाइट से परिणाम डाउनलोड कर सकते हैं।",
+    "officialLink": "https://state.biharpolice.bih.nic.in",
+    "isActive": true
+  },
+  {
+    "id": "r6",
+    "title": "CTET दिसंबर 2025 परिणाम घोषित",
+    "titleEn": "CTET December 2025 Result Declared",
+    "slug": "ctet-december-2025-result",
+    "examDate": "दिसंबर 2025",
+    "resultDate": "30 जनवरी 2026",
+    "organization": "CBSE",
+    "description": "CTET दिसंबर 2025 परीक्षा का परिणाम घोषित कर दिया गया है। उम्मीदवार CTET आधिकारिक वेबसाइट से अपना परिणाम देख सकते हैं।",
+    "officialLink": "https://ctet.nic.in",
+    "isActive": true
+  }
+]

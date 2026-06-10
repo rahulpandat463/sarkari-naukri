@@ -1,0 +1,36 @@
+{
+  "name": "Sarkari Naukri Help",
+  "shortName": "सरकारी नौकरी हेल्प",
+  "tagline": "सरकारी नौकरियों की जानकारी - आपकी सफलता का साथी",
+  "description": "देश की सबसे भरोसेमंद सरकारी नौकरी पोर्टल पर आपका स्वागत है। यहाँ आपको भारतीय रेलवे, SSC, बैंकिंग, पुलिस, शिक्षण, रक्षा और राज्य सरकार की नौकरियों की विस्तृत जानकारी मिलेगी।",
+  "url": "https://www.sarkarinaukrihelp.com",
+  "logo": "/images/logo.png",
+  "telegramLink": "https://t.me/sarkarinaukrihelp",
+  "whatsappGroup": "https://whatsapp.com/channel/sarkarinaukrihelp",
+  "navigation": [
+    { "label": "होम", "url": "/" },
+    { "label": "नौकरियां", "url": "/jobs" },
+    { "label": "परिणाम", "url": "/results" },
+    { "label": "एडमिट कार्ड", "url": "/admit-card" },
+    { "label": "उत्तर कुंजी", "url": "/answer-key" },
+    { "label": "सम्पर्क करें", "url": "/contact" }
+  ],
+  "categories": [
+    { "id": "railway", "label": "रेलवे Jobs", "labelEn": "Railway Jobs", "icon": "🚂", "slug": "railway", "description": "भारतीय रेलवे में नवीनतम भर्तियां" },
+    { "id": "ssc", "label": "SSC Jobs", "labelEn": "SSC Jobs", "icon": "📋", "slug": "ssc", "description": "कर्मचारी चयन आयोग की भर्तियां" },
+    { "id": "banking", "label": "बैंकिंग Jobs", "labelEn": "Banking Jobs", "icon": "🏦", "slug": "banking", "description": "बैंकों में विभिन्न पदों पर भर्तियां" },
+    { "id": "police", "label": "पुलिस Jobs", "labelEn": "Police Jobs", "icon": "👮", "slug": "police", "description": "पुलिस विभाग में नवीनतम भर्तियां" },
+    { "id": "teaching", "label": "शिक्षण Jobs", "labelEn": "Teaching Jobs", "icon": "📚", "slug": "teaching", "description": "स्कूलों और शिक्षण संस्थानों में भर्तियां" },
+    { "id": "defence", "label": "रक्षा Jobs", "labelEn": "Defence Jobs", "icon": "🛡️", "slug": "defence", "description": "सेना, नौसेना और वायुसेना में भर्तियां" },
+    { "id": "state-jobs", "label": "राज्य Jobs", "labelEn": "State Jobs", "icon": "🗺️", "slug": "state-jobs", "description": "विभिन्न राज्य सरकारों में भर्तियां" }
+  ],
+  "breakingNews": [
+    "RRB NTPC भर्ती 2026 के लिए आवेदन शुरू, 6800 पदों पर होगी भर्ती",
+    "SBI क्लर्क भर्ती 2026 का नोटिफिकेशन जारी, 5280 पदों पर आवेदन आमंत्रित",
+    "UP पुलिस कांस्टेबल भर्ती 2026 के लिए 25000 पदों पर आवेदन शुरू",
+    "KVS TGT/PGT शिक्षक भर्ती 2026 का नोटिफिकेशन जारी, 3500 पदों पर भर्ती",
+    "भारतीय सेना में जवान भर्ती रैली 2026 के लिए आवेदन शुरू",
+    "IBPS RRB अधिकारी/कर्मचारी भर्ती 2026 के लिए आवेदन शुरू",
+    "DSSSB भर्ती 2026 का नोटिफिकेशन जारी, 3200 पदों पर आवेदन आमंत्रित"
+  ]
+}

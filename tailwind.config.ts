@@ -9,8 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: "#FF6B35",
+        "primary-dark": "#E55A2B",
+        secondary: "#1B3A6B",
+        "secondary-light": "#2A5298",
+        accent: "#FF6B35",
+      },
+      fontFamily: {
+        sans: ["Arial", "Helvetica", "sans-serif"],
+        hindi: ["Arial", "Helvetica", "sans-serif"],
       },
     },
   },
