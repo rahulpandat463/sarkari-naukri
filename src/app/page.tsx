@@ -4,7 +4,7 @@ import BreakingTicker from "@/components/BreakingTicker";
 import CategoryCard from "@/components/CategoryCard";
 import JobCard from "@/components/JobCard";
 import Sidebar from "@/components/Sidebar";
-import { site as siteData } from "@/lib/utils";
+import AdBanner from "@/components/AdBanner";
 
 export default function Home() {
   const activeJobs = getActiveJobs();
@@ -12,17 +12,15 @@ export default function Home() {
 
   const categoryCounts = site.categories.map((cat) => ({
     ...cat,
-    count: jobs.filter((j) => j.category.includes(cat.id) && j.isActive).length,
+    count: jobs.filter((j) => j.category.includes(cat.id) && !isDateExpired(j.lastDate)).length,
   }));
 
   return (
     <>
       <BreakingTicker />
 
-      <div id="header-ad-mobile" className="bg-gray-100 py-2 text-center md:hidden">
-        <div className="bg-gray-200 h-[60px] flex items-center justify-center text-gray-400 text-xs mx-auto">
-          Ad Space - Mobile Header
-        </div>
+      <div id="header-ad-mobile" className="md:hidden">
+        <AdBanner slot="9988776655" format="horizontal" style={{ minHeight: "60px" }} />
       </div>
 
       <div className="page-container">
@@ -44,11 +42,17 @@ export default function Home() {
                   सभी देखें →
                 </Link>
               </div>
-              <div className="space-y-4">
-                {latestJobs.map((job, idx) => (
-                  <JobCard key={job.id} job={job} showAd={idx === 2} />
-                ))}
-              </div>
+              {latestJobs.length === 0 ? (
+                <div className="text-center py-8 text-gray-500 bg-white rounded-lg border border-gray-200">
+                  फिलहाल कोई सक्रिय नौकरी नहीं है / No active jobs at the moment
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {latestJobs.map((job, idx) => (
+                    <JobCard key={job.id} job={job} showAd={idx === 2} />
+                  ))}
+                </div>
+              )}
               <div className="text-center mt-6">
                 <Link
                   href="/jobs"
@@ -96,7 +100,7 @@ export default function Home() {
             <h3 className="text-xl font-bold mb-2">📱 Telegram Group से जुड़ें</h3>
             <p className="mb-4">नवीनतम नौकरी अपडेट, परिणाम और एडमिट कार्ड की जानकारी सबसे पहले पाने के लिए हमारे Telegram Group से जुड़ें!</p>
             <a
-              href={siteData.telegramLink}
+              href={site.telegramLink}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-white text-primary px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition"
@@ -107,13 +111,17 @@ export default function Home() {
         </section>
       </div>
 
-      <div id="between-content-ad" className="bg-gray-100 py-3 text-center">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-gray-200 h-[120px] flex items-center justify-center text-gray-400 text-sm mx-auto">
-            Ad Space - Between Content (Responsive)
-          </div>
-        </div>
+      <div id="between-content-ad" className="max-w-7xl mx-auto px-4">
+        <AdBanner slot="1122334455" format="auto" />
       </div>
     </>
   );
+}
+
+function isDateExpired(dateStr: string): boolean {
+  const [day, month, year] = dateStr.split("/");
+  const target = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
+  return target < now;
 }

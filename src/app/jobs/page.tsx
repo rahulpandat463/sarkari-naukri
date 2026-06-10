@@ -1,4 +1,4 @@
-import { site, getActiveJobs, paginate } from "@/lib/utils";
+import { site, getActiveJobs, getExpiredJobs, paginate } from "@/lib/utils";
 import JobCard from "@/components/JobCard";
 import Pagination from "@/components/Pagination";
 import Sidebar from "@/components/Sidebar";
@@ -22,9 +22,13 @@ export default function JobsPage({
   const categoryFilter = searchParams.category || "";
   const stateFilter = searchParams.state || "";
   const searchQuery = searchParams.q || "";
+  const tab = searchParams.tab || "active";
   const perPage = 10;
 
-  let filtered = getActiveJobs();
+  const allActive = getActiveJobs();
+  const allExpired = getExpiredJobs();
+
+  let filtered = tab === "expired" ? [...allExpired] : [...allActive];
 
   if (searchQuery) {
     const q = searchQuery.toLowerCase();
@@ -52,24 +56,54 @@ export default function JobsPage({
   });
 
   const { items, totalPages, currentPage } = paginate(filtered, page, perPage);
-  const states = Array.from(new Set(getActiveJobs().map((j) => j.state)));
+  const states = Array.from(new Set(allActive.map((j) => j.state)));
 
   const params = new URLSearchParams();
   if (categoryFilter) params.set("category", categoryFilter);
   if (stateFilter) params.set("state", stateFilter);
   if (searchQuery) params.set("q", searchQuery);
+  if (tab) params.set("tab", tab);
 
   return (
     <div className="page-container">
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-secondary">सभी सरकारी नौकरियां / All Govt Jobs</h1>
-        <p className="text-sm text-gray-600 mt-1">कुल {filtered.length} सक्रिय नौकरियां उपलब्ध</p>
+        <p className="text-sm text-gray-600 mt-1">
+          {tab === "active"
+            ? `कुल ${allActive.length} सक्रिय नौकरियां उपलब्ध`
+            : `कुल ${allExpired.length} पुरानी भर्तियां / Closed Jobs`
+          }
+        </p>
+      </div>
+
+      <div className="flex space-x-1 mb-6 border-b border-gray-200">
+        <a
+          href={`/jobs?tab=active${categoryFilter ? `&category=${categoryFilter}` : ""}${stateFilter ? `&state=${stateFilter}` : ""}`}
+          className={`px-4 py-2 text-sm font-semibold border-b-2 transition ${
+            tab === "active" || !tab
+              ? "border-primary text-primary"
+              : "border-transparent text-gray-500 hover:text-gray-700"
+          }`}
+        >
+          ✅ सक्रिय नौकरियां / Active ({allActive.length})
+        </a>
+        <a
+          href={`/jobs?tab=expired${categoryFilter ? `&category=${categoryFilter}` : ""}${stateFilter ? `&state=${stateFilter}` : ""}`}
+          className={`px-4 py-2 text-sm font-semibold border-b-2 transition ${
+            tab === "expired"
+              ? "border-primary text-primary"
+              : "border-transparent text-gray-500 hover:text-gray-700"
+          }`}
+        >
+          📦 पुरानी भर्तियां / Closed ({allExpired.length})
+        </a>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
           <div className="bg-white rounded-lg shadow-md border border-gray-200 p-4 mb-6">
             <form method="GET" className="grid grid-cols-1 sm:grid-cols-4 gap-3">
+              <input type="hidden" name="tab" value={tab} />
               <div>
                 <label className="text-xs font-semibold text-gray-600 block mb-1">श्रेणी / Category</label>
                 <select name="category" defaultValue={categoryFilter} className="w-full border rounded px-3 py-2 text-sm">
@@ -110,7 +144,7 @@ export default function JobsPage({
           ) : (
             <div className="space-y-4">
               {items.map((job, idx) => (
-                <JobCard key={job.id} job={job} showAd={idx === 2} />
+                <JobCard key={job.id} job={job} showAd={idx === 2 && tab !== "expired"} />
               ))}
             </div>
           )}

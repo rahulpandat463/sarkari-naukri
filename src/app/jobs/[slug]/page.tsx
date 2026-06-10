@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getJobBySlug, getRelatedJobs, formatDate, formatNumber, site, jobs } from "@/lib/utils";
+import { getJobBySlug, getRelatedJobs, formatDate, formatNumber, site, jobs, getBaseUrl } from "@/lib/utils";
 import ShareButtons from "@/components/ShareButtons";
 import CountdownTimer from "@/components/CountdownTimer";
 import JobCard from "@/components/JobCard";
 import Sidebar from "@/components/Sidebar";
+import AdBanner from "@/components/AdBanner";
 import type { Metadata } from "next";
+
+const baseUrl = getBaseUrl();
 
 export function generateStaticParams() {
   return jobs.map((job) => ({ slug: job.slug }));
@@ -25,11 +28,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${job.title} | ${site.name}`,
       description: `${job.department} में ${formatNumber(job.totalPosts)} पदों पर भर्ती। अंतिम तिथि: ${formatDate(job.lastDate)}`,
-      url: `${site.url}/jobs/${job.slug}`,
+      url: `${baseUrl}/jobs/${job.slug}`,
       type: "article",
     },
     alternates: {
-      canonical: `${site.url}/jobs/${job.slug}`,
+      canonical: `${baseUrl}/jobs/${job.slug}`,
     },
   };
 }
@@ -41,7 +44,7 @@ export default function JobDetailPage({ params }: Props) {
   const relatedJobs = getRelatedJobs(job, 4);
 
   const jobPostingJsonLd = {
-    "@context": "https://schema.org",
+    "@context": "https://schema.org/",
     "@type": "JobPosting",
     title: job.title,
     description: `${job.department} में ${formatNumber(job.totalPosts)} पदों पर भर्ती। शैक्षणिक योग्यता: ${job.qualification}। आयु सीमा: ${job.ageLimit.min}-${job.ageLimit.max} वर्ष।`,
@@ -56,13 +59,16 @@ export default function JobDetailPage({ params }: Props) {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
-        addressLocality: job.state,
         addressCountry: "IN",
+        addressRegion: job.state,
       },
     },
+    totalJobOpenings: job.totalPosts,
     employmentType: "FULL_TIME",
-    eligibility: job.qualification,
-    totalVacancies: job.totalPosts,
+    applicantLocationRequirements: {
+      "@type": "Country",
+      name: "India",
+    },
   };
 
   const faqJsonLd = {
@@ -101,6 +107,20 @@ export default function JobDetailPage({ params }: Props) {
           __html: JSON.stringify(faqJsonLd),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "होम", item: baseUrl },
+              { "@type": "ListItem", position: 2, name: "नौकरियां", item: `${baseUrl}/jobs/` },
+              { "@type": "ListItem", position: 3, name: job.title, item: `${baseUrl}/jobs/${job.slug}/` },
+            ],
+          }),
+        }}
+      />
 
       <div className="page-container">
         <nav className="text-sm text-gray-500 mb-4">
@@ -128,7 +148,7 @@ export default function JobDetailPage({ params }: Props) {
                       {site.categories.find((c) => c.id === cat)?.label || cat}
                     </Link>
                   ))}
-                  <span className="bg-green-100 text-green-700 px-3 py-1 rounded text-sm">
+                  <span className={`px-3 py-1 rounded text-sm ${job.isActive ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
                     {job.isActive ? "Active" : "Closed"}
                   </span>
                 </div>
@@ -294,8 +314,8 @@ export default function JobDetailPage({ params }: Props) {
               </div>
             </div>
 
-            <div className="bg-gray-200 h-[120px] flex items-center justify-center text-gray-400 text-sm rounded-lg">
-              Ad Space - After Job Content (Responsive)
+            <div className="no-print">
+              <AdBanner slot="5566778899" format="auto" style={{ minHeight: "120px" }} />
             </div>
 
             {relatedJobs.length > 0 && (

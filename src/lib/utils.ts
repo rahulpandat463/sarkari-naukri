@@ -11,8 +11,38 @@ export const results = resultsData as Result[];
 export const admitCards = admitCardsData as AdmitCard[];
 export const answerKeys = answerKeysData as AnswerKey[];
 
+export function getBaseUrl(): string {
+  return process.env.NEXT_PUBLIC_BASE_URL || "https://sarkari-naukri-three.vercel.app";
+}
+
+export function getTodayDate(): Date {
+  const now = new Date();
+  return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+}
+
+export function parseDate(dateStr: string): Date {
+  const [day, month, year] = dateStr.split("/");
+  return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+}
+
+export function isDateExpired(dateStr: string): boolean {
+  return parseDate(dateStr) < getTodayDate();
+}
+
+export function isJobActive(job: Job): boolean {
+  return !isDateExpired(job.lastDate);
+}
+
 export function getActiveJobs(): Job[] {
-  return jobs.filter((j) => j.isActive);
+  return jobs.filter((j) => isJobActive(j));
+}
+
+export function getExpiredJobs(): Job[] {
+  return jobs.filter((j) => !isJobActive(j));
+}
+
+export function getAllJobs(): Job[] {
+  return jobs;
 }
 
 export function getInactiveJobs(): Job[] {
@@ -24,17 +54,17 @@ export function getJobBySlug(slug: string): Job | undefined {
 }
 
 export function getJobsByCategory(category: string): Job[] {
-  return jobs.filter((j) => j.category.includes(category) && j.isActive);
+  return jobs.filter((j) => j.category.includes(category) && isJobActive(j));
 }
 
 export function getRelatedJobs(job: Job, limit = 4): Job[] {
   return jobs
-    .filter((j) => j.id !== job.id && j.category.some((c) => job.category.includes(c)) && j.isActive)
+    .filter((j) => j.id !== job.id && j.category.some((c) => job.category.includes(c)) && isJobActive(j))
     .slice(0, limit);
 }
 
 export function getJobsByState(state: string): Job[] {
-  return jobs.filter((j) => j.state === state && j.isActive);
+  return jobs.filter((j) => j.state === state && isJobActive(j));
 }
 
 export function getActiveResults(): Result[] {
@@ -71,11 +101,27 @@ export function getCategoryLabel(categoryId: string): string {
 }
 
 export function getDaysRemaining(dateStr: string): number {
-  const [day, month, year] = dateStr.split("/");
-  const target = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
-  const now = new Date();
+  const target = parseDate(dateStr);
+  const now = getTodayDate();
   const diff = target.getTime() - now.getTime();
   return Math.ceil(diff / (1000 * 60 * 60 * 24));
+}
+
+export function isNewJob(job: Job): boolean {
+  const created = parseDate(job.createdAt);
+  const now = getTodayDate();
+  const diff = now.getTime() - created.getTime();
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  return days <= 7;
+}
+
+export function isHotJob(job: Job): boolean {
+  return job.totalPosts > 10000;
+}
+
+export function isUrgentJob(job: Job): boolean {
+  const daysLeft = getDaysRemaining(job.lastDate);
+  return daysLeft <= 7 && daysLeft > 0;
 }
 
 export function formatDate(dateStr: string): string {

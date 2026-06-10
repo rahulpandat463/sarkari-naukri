@@ -3,10 +3,10 @@
   "shortName": "सरकारी नौकरी हेल्प",
   "tagline": "सरकारी नौकरियों की जानकारी - आपकी सफलता का साथी",
   "description": "देश की सबसे भरोसेमंद सरकारी नौकरी पोर्टल पर आपका स्वागत है। यहाँ आपको भारतीय रेलवे, SSC, बैंकिंग, पुलिस, शिक्षण, रक्षा और राज्य सरकार की नौकरियों की विस्तृत जानकारी मिलेगी।",
-  "url": "https://www.sarkarinaukrihelp.com",
+  "url": "https://sarkari-naukri-three.vercel.app",
   "logo": "/images/logo.png",
   "telegramLink": "https://t.me/sarkarinaukrihelp",
-  "whatsappGroup": "https://whatsapp.com/channel/sarkarinaukrihelp",
+  "whatsappGroup": "",
   "navigation": [
     { "label": "होम", "url": "/" },
     { "label": "नौकरियां", "url": "/jobs" },
